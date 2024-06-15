@@ -1,4 +1,4 @@
-# Trabalho Final de POO
+# Trabalho Final de Programação Orientada a Objetos com a utilização do Spring Boot 
 
 Este projeto é uma aplicação Spring Boot para gerenciar carros e multas. Ele utiliza JPA para persistência de dados e fornece uma API REST para interação com o sistema.
 

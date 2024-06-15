@@ -44,23 +44,37 @@ Este projeto é uma aplicação Spring Boot para gerenciar carros e multas. Ele 
 ## Exemplo de Uso
 ### Cadastrar um Carro
 
-curl -X POST http://localhost:8080/carro -H "Content-Type: application/json" -d '{
+- Post: localhost:8080/carro
+```
+{
   "nomeMotorista": "João Silva",
-  "placa": "ABC1234",
+  "placa": "ABC-123",
   "modelo": "Sedan",
   "cor": "Preto"
-}'
+}
+ ```
 
 ### Buscar Carro por Placa
-curl -X GET http://localhost:8080/carro/placa/ABC1234
+- Get: localhost:8080/carro/placa/{placa}
+```
+Retorno
+
+id: 1
+Motorista: João Silva
+placa: ABC-123
+Modelo: Sedan
+Cor: Preto
+ ```
 
 ### Cadastrar uma Multa
-curl -X POST http://localhost:8080/multa -H "Content-Type: application/json" -d '{
+- post: localhost:8080/multa
+```
+  {
   "infracao": "Excesso de velocidade",
   "valor": 150.0,
   "carro": {
     "id": 1
   }
-}'
-
+}
+ ```
 ### Esse `README.md` fornece uma visão geral do projeto, instruções de configuração e uso, e detalhes sobre os endpoints da API. Certifique-se de ajustar quaisquer informações específicas do seu projeto, como o link do repositório e detalhes adicionais que possam ser relevantes

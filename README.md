@@ -23,23 +23,23 @@ Este projeto é uma aplicação Spring Boot para gerenciar carros e multas. Ele 
    git clone https://github.com/seu-usuario/trabalho_final.git
    cd trabalho_final
 
-Endpoints da API
-Carro
-GET /carro: Lista todos os carros cadastrados.
-GET /carro/{id}: Busca um carro pelo ID.
-GET /carro/modelo/{modelo}: Lista carros por modelo.
-GET /carro/placa/{placa}: Busca um carro pela placa.
-GET /carro/motorista/{nomeMotorista}: Busca um carro pelo nome do motorista.
-POST /carro: Cadastra um novo carro.
-PUT /carro/{id}: Atualiza os dados de um carro existente.
-DELETE /carro/{id}: Exclui um carro pelo ID.
-Multa
-GET /multa: Lista todas as multas cadastradas.
-GET /multa/{id}: Busca uma multa pelo ID.
-GET /multa/infracao/{infracao}: Lista multas por infração.
-POST /multa: Cadastra uma nova multa.
-PUT /multa/{id}: Atualiza os dados de uma multa existente.
-DELETE /multa/{id}: Exclui uma multa pelo ID
+## Endpoints da API
+### Carro
+- GET /carro: Lista todos os carros cadastrados.
+- GET /carro/{id}: Busca um carro pelo ID.
+- GET /carro/modelo/{modelo}: Lista carros por modelo.
+- GET /carro/placa/{placa}: Busca um carro pela placa.
+- GET /carro/motorista/{nomeMotorista}: Busca um carro pelo nome do motorista.
+- POST /carro: Cadastra um novo carro.
+- PUT /carro/{id}: Atualiza os dados de um carro existente.
+- DELETE /carro/{id}: Exclui um carro pelo ID.
+- Multa
+- GET /multa: Lista todas as multas cadastradas.
+- GET /multa/{id}: Busca uma multa pelo ID.
+- GET /multa/infracao/{infracao}: Lista multas por infração.
+- POST /multa: Cadastra uma nova multa.
+- PUT /multa/{id}: Atualiza os dados de uma multa existente.
+- DELETE /multa/{id}: Exclui uma multa pelo ID
 
 ## Exemplo de Uso
 ### Cadastrar um Carro

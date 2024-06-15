@@ -33,7 +33,7 @@ Este projeto é uma aplicação Spring Boot para gerenciar carros e multas. Ele 
 - POST /carro: Cadastra um novo carro.
 - PUT /carro/{id}: Atualiza os dados de um carro existente.
 - DELETE /carro/{id}: Exclui um carro pelo ID.
-- Multa
+### Multa
 - GET /multa: Lista todas as multas cadastradas.
 - GET /multa/{id}: Busca uma multa pelo ID.
 - GET /multa/infracao/{infracao}: Lista multas por infração.

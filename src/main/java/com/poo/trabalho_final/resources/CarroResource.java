@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.poo.trabalho_final.model.Carro;
@@ -73,14 +74,15 @@ public class CarroResource {
     }
 
 
-    @GetMapping("motorista/{nomeMotorista}")
-    public String findByMotorista(@PathVariable String nomeMotorista) {
-     Carro carro = service.findByMotorista(nomeMotorista);
-     if(carro != null){
-            return carro.toString();
-     }
-     return "Não encontrado nenhum motorista com o nome: " + nomeMotorista;
+    @GetMapping("/motorista")
+    public String findByMotorista(@RequestParam String nomeMotorista) {
+        List<Carro> carro = service.findByMotorista(nomeMotorista);
+        if (carro != null) {
+            return carro.stream().map(Carro::toString).collect(Collectors.joining(""));
+        }
+        return "Não encontrado nenhum motorista com o nome: " + nomeMotorista;
     }
+    
 
     @PostMapping
     public String cadastraCarro(@Valid @RequestBody Carro c) {
@@ -93,21 +95,31 @@ public class CarroResource {
     }
 
     @PutMapping("/{id}")
-    public String alteraCarro(@PathVariable String id, @Valid @RequestBody Carro c) {
+    public String alteraCarro(@PathVariable String id, @RequestBody Carro c) {
         try {
             Integer carroId = Integer.parseInt(id);
             Carro antigo = service.findById(carroId);
             if (antigo != null) {
-                antigo.setNomeMotorista(c.getNomeMotorista());
-                antigo.setModelo(c.getModelo());
-                antigo.setPlaca(c.getPlaca());
-                antigo.setCor(c.getCor());
+                if(c.getNomeMotorista() != null){
+                    antigo.setNomeMotorista(c.getNomeMotorista());
+                }
+                if(c.getModelo() != null ){
+                    antigo.setModelo(c.getModelo());
+                }
+                if(c.getPlaca() != null){
+                    antigo.setPlaca(c.getPlaca());
+                }
+                if(c.getCor() != null){
+                    antigo.setCor(c.getCor());
+                }
                 return service.alteraCarro(antigo).toString();
             } else {
                 return "Não encontrado nenhum carro com o id:  " + id;
             }
         } catch (NumberFormatException e) {
             return "O id informado não é válido. Por favor, insira um número válido.";
+        }catch(ConstraintViolationException e){
+            return "A placa deve estar no formato abc-123";
         }
     }
 

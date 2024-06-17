@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.poo.trabalho_final.model.Carro;
@@ -54,14 +55,15 @@ public class MultaResource {
         }
     }
 
-    @GetMapping("/infracao/{infracao}")
-    public String findByInfracao(@PathVariable String infracao) {
-        List<Multa> multa = service.findByInfracao(infracao);
-        if (multa.isEmpty()) {
-            return "Não enctrada nenhuma multa cadastrada com a infração: " + infracao;
+    @GetMapping("/infracao")
+    public String findByInfracao(@RequestParam String infracao) {
+        List<Multa> multas = service.findByInfracao(infracao);
+        if (multas.isEmpty()) {
+            return "Não encontrada nenhuma multa cadastrada com a infração: " + infracao;
         }
-        return multa.stream().map(Multa::toString).collect(Collectors.joining(""));
+        return multas.stream().map(Multa::toString).collect(Collectors.joining("\n"));
     }
+    
 
     public ResponseEntity<Multa> findByCarro(Carro carro) {
         try {
@@ -92,9 +94,15 @@ public class MultaResource {
             Integer multaId = Integer.parseInt(id);
             Multa antiga = service.findById(multaId);
             if (antiga != null) {
-                antiga.setCarro(m.getCarro());
-                antiga.setInfracao(m.getInfracao());
+                if(m.getCarro() != null){
+                    antiga.setCarro(m.getCarro());
+                }
+                if(m.getInfracao() !=  null){
+                    antiga.setInfracao(m.getInfracao());
+                }
+               if(m.getValor() !=  null){
                 antiga.setValor(m.getValor());
+               }
                 return service.alteraMulta(antiga).toString();
             } else {
                 return "Não encontrada nenhuma multa com o id " + id;

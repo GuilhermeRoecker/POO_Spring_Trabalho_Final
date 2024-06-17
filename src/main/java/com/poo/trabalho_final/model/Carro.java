@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,8 +28,9 @@ public class Carro {
     @NotNull(message = "Nome não pode ser vazio")
     private String nomeMotorista;
     
-    @Column(length = 7)
+    @Column(length = 7, unique = true)
     @Size(max = 7)
+    @Pattern(regexp = "[A-Za-z]{3}-[0-9]{3}", message = "A placa deve estar no formato abc-123")
     @NotNull(message = "Placa não pode estar vazio")
     private String placa;
     

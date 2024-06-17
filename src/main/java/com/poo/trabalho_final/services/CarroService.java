@@ -42,7 +42,7 @@ public class CarroService {
         return repository.findByModelo(modelo);
     }
 
-    public Carro findByMotorista(String nomeMotorista){
+    public List<Carro> findByMotorista(String nomeMotorista){
         return repository.findBynomeMotorista(nomeMotorista);
     }
 }

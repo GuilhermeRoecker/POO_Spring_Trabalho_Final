@@ -55,6 +55,7 @@ localhost:8080/carro
   "cor": "Preto"
 }
  ```
+`Obs: Placa deve estar no formato "ABC-123" caso contrario sistema não deixara cadastrar`
 `Retorno`
 ```
 id: 1
@@ -129,7 +130,7 @@ Cor: Preto
 ### Buscar Carro pelo Motorista
 `Get` 
 ```
-localhost:8080/carro/motorista/nomeMotorista?João%Silva
+localhost:8081/carro/motorista?nomeMotorista=Jo%C3%A3o%20Silva
  ```
 `Retorno`
 ```
@@ -139,7 +140,8 @@ placa: ABC-123
 Modelo: Sedan
 Cor: Preto
  ```
-`Obs: Os espaços em branco devem ser preenchidos pelo caracter % para que a pesquisa funcione`
+`Obs: Os espaços em branco devem ser preenchidos pelo caracter %20 para que a pesquisa funcione.
+É possivel relaizar busca por palavras chaves. Ex: Silva`
 
 ### Alterar um carro ja cadastrado
 
@@ -173,9 +175,13 @@ Carro com o id: 1 foi apagado com sucesso
  ```
 
 ### Cadastrar uma Multa
-- post: localhost:8080/multa
+`POST`
 ```
-  {
+localhost:8080/multa
+ ```
+`Dados cadastrais`
+```
+{
   "infracao": "Excesso de velocidade",
   "valor": 150.0,
   "carro": {
@@ -183,4 +189,119 @@ Carro com o id: 1 foi apagado com sucesso
   }
 }
  ```
+`Retorno`
+```
+Multa
+Id: 1
+Infracao: Excesso de velocidade
+Valor: 150.0
+Carro: id: 1
+Motorista: null
+placa: null
+Modelo: null
+Cor: null
+ ```
+### Visualizar todas as multas cadastradas
+`GET`
+```
+localhost:8080/multa
+ ```
+`Retorno`
+```
+Multa
+Id: 1
+Infracao: Excesso de velocidade
+Valor: 150.0
+Carro: id: 1
+Motorista: João Silva
+placa: ABC-123
+Modelo: Sedan
+Cor: Preto
+
+Multa
+Id: 2
+Infracao: Dirigir embreagado
+Valor: 150.0
+Carro: id: 2
+Motorista: João Silva
+placa: ABC-123
+Modelo: Fiesta
+Cor: Preto
+ ```
+
+### Buscar multa por id
+`GET`
+```
+localhost:8080/multa/1
+ ```
+`Retorno`
+```
+Multa
+Id: 1
+Infracao: Excesso de velocidade
+Valor: 150.0
+Carro: id: 1
+Motorista: João Silva
+placa: ABC-123
+Modelo: Sedan
+Cor: Preto
+ ```
+### Listar todas as multa por determinada Infração
+`GET`
+```
+localhost:8081/multa/infracao?infracao=excesso%20de%20velocidade
+ ```
+`Retorno`
+```
+Multa
+Id: 1
+Infracao: Excesso de velocidade
+Valor: 150.0
+Carro: id: 1
+Motorista: João Silva
+placa: ABC-123
+Modelo: Sedan
+Cor: Preto
+ ```
+`Obs: Os espaços em branco devem ser preenchidos pelo caracter %20 para que a pesquisa funcione.
+É possivel relaizar busca por palavras chaves. Ex: velocidade`
+
+### Alterar multa existente
+`PUT`
+```
+localhost:8081/multa/1
+ ```
+`Dados passados`
+```
+{
+  "infracao": "Excesso de velocidade",
+  "valor": 200.0,
+  "carro": {
+    "id": 2
+  }
+}
+ ```
+`Retorno`
+```
+Multa
+Id: 1
+Infracao: Excesso de velocidade
+Valor: 200
+Carro: id: 2
+Motorista: João Silva
+placa: ABC-123
+Modelo: Fiesta
+Cor: Preto
+ ```
+
+### Deletar multa existente
+`DELETE`
+```
+localhost:8081/multa/1
+ ```
+`Retorno`
+```
+Multa com o Id 8 apagada com sucesso
+ ```
+
 ### Esse `README.md` fornece uma visão geral do projeto, instruções de configuração e uso, e detalhes sobre os endpoints da API. Certifique-se de ajustar quaisquer informações específicas do seu projeto, como o link do repositório e detalhes adicionais que possam ser relevantes

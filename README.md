@@ -301,7 +301,7 @@ localhost:8081/multa/1
  ```
 `Retorno`
 ```
-Multa com o Id 8 apagada com sucesso
+Multa com o Id 1 apagada com sucesso
  ```
 
 ### Esse `README.md` fornece uma visão geral do projeto, instruções de configuração e uso, e detalhes sobre os endpoints da API. Certifique-se de ajustar quaisquer informações específicas do seu projeto, como o link do repositório e detalhes adicionais que possam ser relevantes

@@ -1,5 +1,3 @@
-# Trabalho Final de Programação Orientada a Objetos com a utilização do Spring Boot 
-
 Este projeto é uma aplicação Spring Boot para gerenciar carros e multas. Ele utiliza JPA para persistência de dados e fornece uma API REST para interação com o sistema.
 
 ## Estrutura do Projeto
@@ -41,21 +39,41 @@ Este projeto é uma aplicação Spring Boot para gerenciar carros e multas. Ele 
 - PUT /multa/{id}: Atualiza os dados de uma multa existente.
 - DELETE /multa/{id}: Exclui uma multa pelo ID
 
-## Exemplo de Uso
-### Cadastrar um Carro
+# Exemplo de Uso
 
-- Post: localhost:8080/carro
+### Consultar todos os carro cadastrados
+- GET
+```
+localhost:8080/carro
+```
+### Cadastrar um Carro
+- Post:
+``` 
+localhost:8080/carro
+ ```
+Dados cadastrais
 ```
 {
   "nomeMotorista": "João Silva",
   "placa": "ABC-123",
-  "modelo": "Sedan",
+  "modelo": "Fiesta",
   "cor": "Preto"
 }
  ```
 
-### Buscar Carro por Placa
-- Get: localhost:8080/carro/placa/{placa}
+### Consultar carro cadastrado pelo id
+- GET 
+```
+ localhost:8080/carro/1
+```
+### Consultar todos os carro de um determinado modelo
+- GET: localhost:8080/carro/modelo/Fiesta
+
+### Consultar um carro pelo placa
+- GET: localhost:8080/carro/placa/ABC-123
+
+### Buscar Carro pelo Motorista
+- Get: localhost:8080/carro/motorista/
 ```
 Retorno
 

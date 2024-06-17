@@ -306,10 +306,10 @@ Multa com o Id 1 apagada com sucesso
 
 ### Limpar tabela de dados
 ```
-DELETE FORM avaliacao_3.carro WHERE id > 0;
+DELETE FROM avaliacao_3.carro WHERE id > 0;
 ALTER TABLE avaliacao_3.carro AUTO_INCREMENT = 1 ;
 
-DELETE FORM avaliacao_3.multa WHERE id > 0;
+DELETE FROM avaliacao_3.multa WHERE id > 0;
 ALTER TABLE avaliacao_3.multa AUTO_INCREMENT = 1 ;
 ```
 

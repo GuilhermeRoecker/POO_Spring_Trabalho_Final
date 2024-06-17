@@ -304,4 +304,13 @@ localhost:8081/multa/1
 Multa com o Id 1 apagada com sucesso
  ```
 
+### Limpar tabela de dados
+```
+DELETE FORM avaliacao_3.carro WHERE id > 0;
+ALTER TABLE avaliacao_3.carro AUTO_INCREMENT = 1 ;
+
+DELETE FORM avaliacao_3.multa WHERE id > 0;
+ALTER TABLE avaliacao_3.multa AUTO_INCREMENT = 1 ;
+```
+
 ### Esse `README.md` fornece uma visão geral do projeto, instruções de configuração e uso, e detalhes sobre os endpoints da API. Certifique-se de ajustar quaisquer informações específicas do seu projeto, como o link do repositório e detalhes adicionais que possam ser relevantes

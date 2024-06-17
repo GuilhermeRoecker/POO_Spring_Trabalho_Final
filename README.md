@@ -41,17 +41,12 @@ Este projeto é uma aplicação Spring Boot para gerenciar carros e multas. Ele 
 
 # Exemplo de Uso
 
-### Consultar todos os carro cadastrados
-- GET
-```
-localhost:8080/carro
-```
 ### Cadastrar um Carro
-- Post:
+`Post`
 ``` 
 localhost:8080/carro
  ```
-Dados cadastrais
+`Dados cadastrais`
 ```
 {
   "nomeMotorista": "João Silva",
@@ -60,28 +55,121 @@ Dados cadastrais
   "cor": "Preto"
 }
  ```
+`Retorno`
+```
+id: 1
+Motorista: João Silva
+placa: ABC-123
+Modelo: Fiesta
+Cor: Preto
+ ```
+
+### Consultar todos os carro cadastrados
+`GET`
+```
+localhost:8080/carro
+```
+`Retorno`
+```
+id: 1
+Motorista: João Silva
+placa: ABC-123
+Modelo: Fiesta
+Cor: Preto
+
+id: 2
+Motorista: Eduardo Rocha
+placa: DEF-456
+Modelo: Uno
+Cor: Vermelho
+ ```
 
 ### Consultar carro cadastrado pelo id
-- GET 
+`GET`
 ```
  localhost:8080/carro/1
 ```
+`Retorno`
+```
+id: 1
+Motorista: João Silva
+placa: ABC-123
+Modelo: Fiesta
+Cor: Preto
+ ```
+
 ### Consultar todos os carro de um determinado modelo
-- GET: localhost:8080/carro/modelo/Fiesta
+`GET` 
+```
+localhost:8080/carro/modelo/Fiesta
+ ```
+`Retorno`
+```
+id: 1
+Motorista: João Silva
+placa: ABC-123
+Modelo: Fiesta
+Cor: Preto
+ ```
 
 ### Consultar um carro pelo placa
-- GET: localhost:8080/carro/placa/ABC-123
+`GET`
+```
+localhost:8080/carro/placa/ABC-123
+  ```
+`Retorno`
+```
+id: 1
+Motorista: João Silva
+placa: ABC-123
+Modelo: Fiesta
+Cor: Preto
+ ```
 
 ### Buscar Carro pelo Motorista
-- Get: localhost:8080/carro/motorista/
+`Get` 
 ```
-Retorno
-
+localhost:8080/carro/motorista/nomeMotorista?João%Silva
+ ```
+`Retorno`
+```
 id: 1
 Motorista: João Silva
 placa: ABC-123
 Modelo: Sedan
 Cor: Preto
+ ```
+`Obs: Os espaços em branco devem ser preenchidos pelo caracter % para que a pesquisa funcione`
+
+### Alterar um carro ja cadastrado
+
+`PUT`
+```
+localhost:8080/carro/1
+ ```
+```
+{
+  "placa": "XYZ-258",
+  "cor": "Azul"
+}
+ ```
+`Retorno`
+```
+id: 1
+Motorista: João Silva
+placa: XYZ-258
+Modelo: Sedan
+Cor: Azul
+ ```
+
+### Apagar carro cadastrado
+`DELETE`
+```
+localhost:8080/carro/1
+ ```
+`Retorno`
+```
+Carro com o id: 1 foi apagado com sucesso
  ```
 
 ### Cadastrar uma Multa

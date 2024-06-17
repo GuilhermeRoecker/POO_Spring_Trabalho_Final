@@ -1,3 +1,4 @@
+# Alunos: Guilherme Roecker e Eduardo Vandresen
 Este projeto é uma aplicação Spring Boot para gerenciar carros e multas. Ele utiliza JPA para persistência de dados e fornece uma API REST para interação com o sistema.
 
 ## Estrutura do Projeto

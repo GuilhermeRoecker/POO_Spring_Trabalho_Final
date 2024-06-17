@@ -55,7 +55,6 @@ localhost:8080/carro
   "cor": "Preto"
 }
  ```
-`Obs: Placa deve estar no formato "ABC-123" caso contrario sistema não deixara cadastrar`
 `Retorno`
 ```
 id: 1
@@ -64,6 +63,7 @@ placa: ABC-123
 Modelo: Fiesta
 Cor: Preto
  ```
+`Obs: Placa deve estar no formato "ABC-123" caso contrario sistema não deixara cadastrar.`
 
 ### Consultar todos os carro cadastrados
 `GET`
